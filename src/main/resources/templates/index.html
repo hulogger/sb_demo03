@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    显示所有学生信息(th)<hr/>
+    <table  border="2" width="80%">
+        <tr>
+            <td>学号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>性别</td>
+            <td>地址</td>
+            <td>状态</td>
+            <td>生日</td>
+            <td>操作</td>
+        </tr>
+            <tr th:each="s,state:${studentsList}">
+                <td th:text="${s.xh}"></td>
+                <td th:text="${s.name}"></td>
+                <td th:text="${s.age}"></td>
+                <td th:text="${s.sex}"></td>
+                <td th:text="${s.address}"></td>
+                <td th:text="${s.state}"></td>
+                <td th:text="${#dates.format(s.birthday,'yyyy年 MM月 dd日  hh:mm:ss')}"></td>
+                <td><a href="getStuAction?xh=${s.xh}">修改</a>  <a href="javascript:if(confirm('确定想删除吗?')) location.href='delStudents?xh=${s.xh}';">删除</a></td>
+            </tr>
+</center>
+</body>
+</html>
